@@ -1,0 +1,99 @@
+﻿@using Web.Models;
+@using BotDetect.Web.Mvc;
+@model FeedbackViewModel
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    MvcCaptcha exampleCaptcha = new MvcCaptcha("ExampleCaptcha");
+}
+
+<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl" rel="stylesheet" type="text/css" />
+<style>
+    #map {
+        height: 600px;
+    }
+</style>
+
+@section scriptFooter {
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk3Eeu6MXm1Y6qil2hO6j89kckY5nnSTo"></script>
+    <script src="/Assets/client/js/controllers/contactController.js"></script>
+}
+
+@section banner {
+    <!-- banner -->
+    <div class="banner banner10">
+        <div class="container">
+            <h2>Liên hệ</h2>
+        </div>
+    </div>
+    <!-- //banner -->
+    <!-- breadcrumbs -->
+    <div class="breadcrumb_dress">
+        <div class="container">
+            <ul>
+                <li><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Trang chủ</a> <i>/</i></li>
+                <li>Liên hệ</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //breadcrumbs -->
+}
+
+<input type="hidden" id="hidAddress" value="@Model.ContactDetail.Address" />
+<input type="hidden" id="hidName" value="@Model.ContactDetail.Name <br /> @Model.ContactDetail.Phone <br /> @Model.ContactDetail.Email" />
+<input type="hidden" id="hidLat" value="@Model.ContactDetail.Lat" />
+<input type="hidden" id="hidLng" value="@Model.ContactDetail.Lng" />
+
+<!-- mail -->
+<div class="mail">
+    <div class="container">
+        <h3>Liên hệ</h3>
+        <div class="agile_mail_grids">
+            <div class="col-md-5 contact-left">
+                <h4>Địa chỉ</h4>
+                <p>@Model.ContactDetail.Address</p>
+                <ul>
+                    <li>Điện thoại :@Model.ContactDetail.Phone</li>
+                    <li><a href="mailto:@(Model.ContactDetail.Email)">@Model.ContactDetail.Email</a></li>
+                </ul>
+            </div>
+            <div class="col-md-7 contact-left">
+                <h4>Mẫu liên hệ</h4>
+                @using (Html.BeginForm("SendFeedback", "ContactDetail", FormMethod.Post))
+                {
+                    if (TempData["MessageSuccess"] != null)
+                    {
+                        <div class="alert alert-success" role="alert">
+                            <strong>Chúc mừng bạn! </strong> gửi phản hồi thành công.
+                            <br />Chúng tôi sẽ liên hệ lại sớm nhất có thể.
+                        </div>
+                    }
+
+                    @Html.AntiForgeryToken();
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.Name, new { @placeholder = "Họ tên", @autofocus = "autofocus" })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.Email, new { @placeholder = "Email", @type = "email" })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                    @Html.TextAreaFor(model => model.Message, new { @placeholder = "Tin nhắn" })
+                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+
+                    @Html.Captcha(exampleCaptcha)
+                    @Html.TextBox("CaptchaCode", "", htmlAttributes: new { @style = "margin-bottom:20px;" })
+
+                    <input type="submit" value="Gửi">
+                }
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+
+        <div class="contact-bottom">
+            <div id="map"></div>
+        </div>
+    </div>
+</div>
+<!-- //mail -->

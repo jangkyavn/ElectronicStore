@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scriptFooter {
+
+}
+
+<style type="text/css">
+    #lblAlertCartItem {
+        margin-right: 20px;
+        padding: 20px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .input-group-btn button[type=button] {
+        background-color: #ff5063;
+        font-weight: bold;
+    }
+</style>
+
+<div class="container">
+    <div>
+        <a href="#" onclick="javascript:history.back()">< Tiếp tục mua hàng</a>
+    </div>
+    <div class="check">
+        <h1>Giỏ hàng của tôi <span id="lblTotalCountCartItem"></span></h1>
+        <hr />
+        <div class="col-md-9 cart-items">
+            <script>
+                $(document).ready(function (c) {
+                    $('.close1').on('click', function (c) {
+                        $('.cart-header').fadeOut('slow', function (c) {
+                            $('.cart-header').remove();
+                        });
+                    });
+                });
+            </script>
+            <div id="lblCartItemData"></div>
+        </div>
+        <div class="col-md-3 cart-total">
+            <div class="price-details">
+                <h3><b>Thông tin đơn hàng</b></h3>
+                <span>Tạm tính:</span>
+                <span class="total1 lblAmount"></span>
+                <div class="clearfix"></div>
+            </div>
+            <ul class="total_price">
+                <li class="last_price"> <h4><b>Thành tiền:</b></h4></li>
+                <li class="last_price"><span><b class="lblAmount"></b></span></li>
+                <div class="clearfix"> </div>
+            </ul>
+
+
+            <div class="clearfix"></div>
+            <a class="order" href="/thanh-toan">TIẾN HÀNH THANH TOÁN</a>
+        </div>
+
+        <div class="clearfix"> </div>
+    </div>
+</div>
+
+<script id="templateCartItem" type="x-tmpl-mustache">
+    <div class="cart-header" id="cart-header-{{ProductId}}">
+        <div class="close4">
+            <button class="btn-delete-cart" style="background-color:#ff5063;border: none;" data-id="{{ProductId}}"><i class="fa fa-times"></i></button>
+        </div>
+        <div class="cart-sec simpleCart_shelfItem">
+            <div class="cart-item cyc">
+                <img src="/UploadedFiles/images/{{Image}}" class="img-responsive" alt="{{Name}}" />
+            </div>
+            <div class="cart-item-info">
+                <table style="height:60px; width:100%;">
+                    <tr>
+                        <th style="width:40%">Tên sản phẩm</th>
+                        <th style="width:30%">Đơn giá</th>
+                        <th style="width:30%">Số lượng</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{Name}}
+                        </td>
+                        <td>{{Price}}</td>
+                        <td>
+                            <input type="number" class="form-control txt-quantity" data-id="{{ProductId}}" value="{{Quantity}}" min="1" max="10" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</script>
+
+<script>
+    // Remember set you events before call bootstrapSwitch or they will fire after bootstrapSwitch's events
+
+</script>

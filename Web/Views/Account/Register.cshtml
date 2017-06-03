@@ -1,0 +1,74 @@
+﻿@model Web.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scriptFooter {
+
+}
+
+@section banner {
+    <!-- banner -->
+    <div class="banner banner10">
+        <div class="container">
+            <h2>Đăng ký thành viên</h2>
+        </div>
+    </div>
+    <!-- //banner -->
+    <!-- breadcrumbs -->
+    <div class="breadcrumb_dress">
+        <div class="container">
+            <ul>
+                <li><a href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Trang chủ</a> <i>/</i></li>
+                <li>Đăng ký</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //breadcrumbs -->
+}
+
+<!-- mail -->
+<div class="mail">
+    <div class="container">
+        <h3>Đăng ký</h3>
+        <div class="agile_mail_grids">
+            <div class="col-md-7 login-left" style="margin-left: 21%;">
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @id = "defaultForm" }))
+                {
+                    if (TempData["Message"] != null)
+                    {
+                        <div class="alert alert-success">@TempData["Message"]</div>
+                    }
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.Email, new { @placeholder = "Email", @type = "email", @autofocus = "autofocus", @required = "true", @maxlength = "50" })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                    @Html.PasswordFor(model => model.Password, new { @placeholder = "Mật khẩu", @style = "margin:20px 0px 0px 0px;", @required = "true", @maxlength = "50" })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                    @Html.PasswordFor(model => model.ConfirmPassword, new { @placeholder = "Xác nhận mật khẩu", @style = "margin-top:20px;", @required = "true", @maxlength = "50" })
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                    <br />
+                    @Html.TextBoxFor(model => model.FullName, new { @placeholder = "Họ tên", @style = "", @required = "true", @maxlength = "50" })
+                    @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                    <br />
+                    @Html.TextBoxFor(model => model.PhoneNumber, new { @placeholder = "Số điện thoại", @style = "margin-top:20px;", @maxlength = "15" })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.Address, new { @placeholder = "Địa chỉ", @style = "margin-top:20px;", @maxlength = "256" })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                    <input type="submit" value="Đăng ký" style="margin-top:20px;" />
+                }
+                <br />
+                Bạn đã có tài khoản? <a href="@Url.Action("Login", "Account")">Đăng nhập</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!-- //mail -->

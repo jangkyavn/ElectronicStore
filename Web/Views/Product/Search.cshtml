@@ -1,0 +1,272 @@
+﻿@using Web.Models;
+@model Web.Infrastructure.Core.PaginationSet<ProductViewModel>
+
+@{
+    ViewBag.Title = "Kết quả tìm kiếm: " + ViewBag.keyword;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var idx = 0;
+}
+
+@section banner {
+    <!-- banner -->
+    <div class="banner banner1">
+        <div class="container">
+            <h2>Great Offers on <span>Mobiles</span> Flat <i>35% Discount</i></h2>
+        </div>
+    </div>
+    <!-- breadcrumbs -->
+    <div class="breadcrumb_dress">
+        <div class="container">
+            <ul>
+                <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Trang chủ</a> <i>/</i></li>
+                <li>Tìm kiếm</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //breadcrumbs -->
+}
+
+@section scriptFooter {
+    <script src="~/Assets/client/js/controllers/productController.js"></script>
+}
+
+<!-- mobiles -->
+<div class="mobiles">
+    <div class="container">
+        <div class="w3ls_mobiles_grids">
+            <div class="col-md-4 w3ls_mobiles_grid_left">
+                <div class="w3ls_mobiles_grid_left_grid">
+                    <h3>Categories</h3>
+                    <div class="w3ls_mobiles_grid_left_grid_sub">
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <h4 class="panel-title asd">
+                                        <a class="pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>New Arrivals
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body panel_text">
+                                        <ul>
+                                            <li><a href="products.html">Mobiles</a></li>
+                                            <li><a href="products1.html">Laptop</a></li>
+                                            <li><a href="products2.html">Tv</a></li>
+                                            <li><a href="products.html">Wearables</a></li>
+                                            <li><a href="products2.html">Refrigerator</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingTwo">
+                                    <h4 class="panel-title asd">
+                                        <a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>Accessories
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                    <div class="panel-body panel_text">
+                                        <ul>
+                                            <li><a href="products2.html">Grinder</a></li>
+                                            <li><a href="products2.html">Heater</a></li>
+                                            <li><a href="products2.html">Kid's Toys</a></li>
+                                            <li><a href="products2.html">Filters</a></li>
+                                            <li><a href="products2.html">AC</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="panel_bottom">
+                            <li><a href="products.html">Summer Store</a></li>
+                            <li><a href="products.html">Featured Brands</a></li>
+                            <li><a href="products.html">Today's Deals</a></li>
+                            <li><a href="products.html">Latest Watches</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="w3ls_mobiles_grid_left_grid">
+                    <h3>Color</h3>
+                    <div class="w3ls_mobiles_grid_left_grid_sub">
+                        <div class="ecommerce_color">
+                            <ul>
+                                <li><a href="#"><i></i> Red(5)</a></li>
+                                <li><a href="#"><i></i> Brown(2)</a></li>
+                                <li><a href="#"><i></i> Yellow(3)</a></li>
+                                <li><a href="#"><i></i> Violet(6)</a></li>
+                                <li><a href="#"><i></i> Orange(2)</a></li>
+                                <li><a href="#"><i></i> Blue(1)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3ls_mobiles_grid_left_grid">
+                    <h3>Price</h3>
+                    <div class="w3ls_mobiles_grid_left_grid_sub">
+                        <div class="ecommerce_color ecommerce_size">
+                            <ul>
+                                <li><a href="#">Below $ 100</a></li>
+                                <li><a href="#">$ 100-500</a></li>
+                                <li><a href="#">$ 1k-10k</a></li>
+                                <li><a href="#">$ 10k-20k</a></li>
+                                <li><a href="#">$ Above 20k</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 w3ls_mobiles_grid_right">
+                <div class="col-md-6 w3ls_mobiles_grid_right_left">
+                    <div class="w3ls_mobiles_grid_right_grid1">
+                        <img src="/Assets/client/images/46.jpg" alt=" " class="img-responsive" />
+                        <div class="w3ls_mobiles_grid_right_grid1_pos1">
+                            <h3>Smart Phones<span>Up To</span> 15% Discount</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 w3ls_mobiles_grid_right_left">
+                    <div class="w3ls_mobiles_grid_right_grid1">
+                        <img src="/Assets/client/images/47.jpg" alt=" " class="img-responsive" />
+                        <div class="w3ls_mobiles_grid_right_grid1_pos">
+                            <h3>Top 10 Latest<span>Mobile </span>& Accessories</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+
+                <div class="w3ls_mobiles_grid_right_grid2">
+                    <div class="w3ls_mobiles_grid_right_grid2_left">
+                        <h3>Hiện thị kết quả: @Model.TotalCount sản phẩm</h3>
+                    </div>
+                    <div class="w3ls_mobiles_grid_right_grid2_right">
+                        <input type="hidden" id="hidSort" value="@ViewBag.sort" />
+                        <input type="hidden" id="hidKeyword" value="@ViewBag.keyword" />
+                        <select name="select_item" class="select_item" id="ddlChangeSortSearch">
+                            <option value="">Sắp xếp mặc định</option>
+                            <option value="new">Mới nhất</option>
+                            <option value="price-asc">Giá: thấp -> cao</option>
+                            <option value="price-desc">Giá: cao -> thấp</option>
+                        </select>
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                $("#ddlChangeSort").val($("#hidSort").val());
+                            });
+                        </script>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="w3ls_mobiles_grid_right_grid3">
+                    @if (Model.TotalCount > 0)
+                    {
+                        foreach (var item in Model.Items)
+                        {
+                            idx++;
+
+                            <div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_mobiles">
+                                <div class="agile_ecommerce_tab_left mobiles_grid">
+                                    <div class="hs-wrapper hs-wrapper2">
+                                        <img src="~/UploadedFiles/images/@item.Image" alt="@item.Name" class="img-responsive" />
+                                        <div class="w3_hs_bottom w3_hs_bottom_sub1">
+                                            <ul>
+                                                <li>
+                                                    <a href="#" class="lbtnSeeProductDetail" data-id="@item.ID" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <h5><a href="single.html" id="lbtnSeeProductDetail" data-id="@item.ID" title="@item.Name">@(item.Name.Length > 20 ? item.Name.Substring(0, 20) + "..." : item.Name)</a></h5>
+                                    <div class="simpleCart_shelfItem">
+                                        @if (item.PromotionPrice.HasValue)
+                                        {
+                                            <p><span>@item.Price.ToString("N0").Replace(".", ",") vnđ</span> <i class="item_price">@item.PromotionPrice.Value.ToString("N0").Replace(".", ",") vnđ</i></p>
+                                        }
+                                        else
+                                        {
+                                            <p><i class="item_price">@item.Price.ToString("N0").Replace(".", ",") vnđ</i></p>
+                                        }
+                                        <button type="button" class="w3ls-cart">Thêm vào giỏ</button>
+                                    </div>
+                                    @if ((DateTime.Now - item.CreatedDate).Value.Days <= 3)
+                                    {
+                                        <div class="mobiles_grid_pos">
+                                            <h6>Mới</h6>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+                            if (idx % 3 == 0)
+                            {
+                                <div class="clearfix"> </div>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <div class="alert alert-danger">
+                            Không có bản ghi nào được tìm kiếm
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+            <br />
+            @if (Model.TotalPages > 1)
+            {
+                // Create numeric links
+                var startPageIndex = Math.Max(1, Model.Page - Model.MaxPage / 2);
+                var endPageIndex = Math.Min(Model.TotalPages, Model.Page + Model.MaxPage / 2);
+
+                <nav style="margin-left: 61%;">
+                    <ul class="pagination">
+                        @if (Model.Page > 1)
+                        {
+                            <li>
+                                <a href="?keyword=@ViewBag.keyword&page=1&sort=@ViewBag.sort" aria-label="First">
+                                    <i class="fa fa-angle-double-left"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="?keyword=@ViewBag.keyword&page=@(Model.Page-1)&sort=@ViewBag.sort" aria-label="Previous">
+                                    <i class="fa fa-angle-left"></i>
+                                </a>
+                            </li>
+                        }
+
+                        @for (int i = startPageIndex; i <= endPageIndex; i++)
+                        {
+                            if (Model.Page == i)
+                            {
+                                <li class="active"><a href="?keyword=@ViewBag.keyword&page=@i&sort=@ViewBag.sort" title="Trang @i">@i</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="?keyword=@ViewBag.keyword&page=@i&sort=@ViewBag.sort" title="Trang @i">@i</a></li>
+                            }
+                        }
+                        @if (Model.Page < Model.TotalPages)
+                        {
+                            <li>
+                                <a href="?keyword=@ViewBag.keyword&page=@(Model.Page+1)&sort=@ViewBag.sort" aria-label="Next">
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="?keyword=@ViewBag.keyword&page=@Model.TotalPages&sort=@ViewBag.sort" aria-label="Last">
+                                    <i class="fa fa-angle-double-right"></i>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            }
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_ModelProductDetail")
+
